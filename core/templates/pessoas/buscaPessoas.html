@@ -32,16 +32,16 @@
 				</tr>
 				</thead>
 				<tbody>
-				{% for cid in cidadao %}
+				{% for pessoa in pessoas %}
 				<tr>
-				<td>{{ cid.nome }}</td>
-				<td>{{ cid.email }}</td>
-				<td>{{ cid.telefone }}</td>
-				<td>{{ cid.logradouro }}</td>
+				<td><a href="/pessoas/editar/{{ pessoa.pk }}"/>{{ pessoa.nome }}</td>
+				<td>{{ pessoa.email }}</td>
+				<td>{{ pessoa.telefone }}</td>
+				<td>{{ pessoa.logradouro }}</td>
 				</tr>
 				{% endfor %}  
        	 </tbody>
-    	}
+    	
    	</table>
 </div><!-- FIM TABELA -->
 

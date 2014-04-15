@@ -34,7 +34,7 @@
         <tbody>
         {% for pessoa in pessoas %}
           <tr>
-            <td>{{ pessoa.nome }}</td>
+            <td><a href="/pessoas/editar/{{ pessoa.pk }}"/>{{ pessoa.nome }}</td>
             <td>{{ pessoa.email }}</td>
             <td>{{ pessoa.telefone }}</td>
             <td>{{ pessoa.logradouro }}</td>
