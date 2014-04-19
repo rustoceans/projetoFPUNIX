@@ -1,0 +1,9 @@
+Django==1.6
+South==0.8.4
+argparse==1.2.1
+django-registration==1.0
+gunicorn==18.0
+requests==2.2.1
+stripe==1.14.0
+wsgiref==0.1.2
+

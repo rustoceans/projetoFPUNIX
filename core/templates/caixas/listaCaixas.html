@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Caixas{% endblock titulo %}
+
+{% block conteudo %}
+<div align="center">
+  <form role="form" method="POST" action="/caixas/pesquisar/">{% csrf_token %}
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-5">
+          <input type="text" class="form-control" name="txtBusca" id="txtBusca" value="{{ txtBusca }}" placeholder="Pesquisar...">
+        </div>
+        <div class="col-md-1" align="center">
+          <button type="submit" class="btn btn-primary">Pesquisar <span class="glyphicon glyphicon-search"></span></button>
+        </div>
+        <div class="col-md-2" align="center">
+          <a href="/caixas/adicionar/" class="btn btn-warning">Cadastrar Conta</a>
+        </div>
+      </div>
+    </div>  
+  </form>
+  
+  
+
+</div>
+
+<div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for caixa in caixas %}
+          <tr>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.pessoa.nome }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.tipo }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.descricao }}</td>
+            <td>{{ caixa.valor }}</td>
+            <td> {{ caixa.data|date:"d / m / Y"  }}</td>
+            
+          </tr>
+        {% endfor %}  
+       	
+        </tbody>
+      </table>
+</div><!-- FIM TABELA -->
+
+{% endblock conteudo %}
