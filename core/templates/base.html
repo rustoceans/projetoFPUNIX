@@ -18,14 +18,18 @@
   <body>
     <div class="container">
     <!-- MENU -->
-    <a href="/">Home</a> | <a href="/pessoas/">Pessoas</a> | <a href="/caixas/">Contas</a> | <a href="#">Fluxo de Caixa</a>
+    {% include 'navbar.html' %}
     <!-- FIM MENU -->
-    <br />
-    <hr>
+    
+    
+    
       <!-- CONTEUDO -->
         {% block conteudo %}{% endblock conteudo %}
       <!-- FIM CONTEUDO -->
-    <hr>
+
+    
+    
+
 
     <!-- RODAPE -->
     <footer>

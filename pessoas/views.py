@@ -40,7 +40,7 @@ def pessoaBuscar(request):
         consultando = request.POST.get('consultando', 'TUDO')
         try:
             if consultando == 'TUDO':
-                pessoas = Pessoa.objects.all()
+                pessoas = Pessoa.objects.all().order_by('-nome')
             else:
                 pessoas = Pessoa.objects.filter(
                 (Q(nome__contains=consultando) |
