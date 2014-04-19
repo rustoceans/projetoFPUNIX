@@ -6,4 +6,4 @@ gunicorn==18.0
 requests==2.2.1
 stripe==1.14.0
 wsgiref==0.1.2
-
+psycopg2==2.5.1
