@@ -5,7 +5,7 @@
 {% block conteudo %}
 <form class="form-horizontal" action="/pessoas/salvar/" method="POST" role="form">{% csrf_token %}
 
-    <input type="hidden" id="codigo" value="{{ pessoa.pk|default_if_none:'0' }}">
+    <input type="hidden" name="codigo" id="codigo" value="{{ pessoa.pk|default_if_none:'0' }}">
 
     <div class="form-group">
         <label for="idNome" class="col-sm-2 control-label">Nome</label>

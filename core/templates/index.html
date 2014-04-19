@@ -3,5 +3,15 @@
 {% block titulo %}Principal{% endblock titulo %}
 
 {% block conteudo %}
-    <h1>Sistema de Finanças Pessoais desenvolvido em Python with Django!</h1>
+	<div class="col-sm-3" align="center">
+    	<img class="img-responsive" src="{{ STATIC_URL }}img/gestao_financeira.jpg">
+            </div>
+            <div class="col-sm-9" align="center">
+            	<div class="page-header">
+ 				<h1>Sistema de Finanças Pessoais <small>Planejando sua renda</small></h1>
+				</div>
+				Projeto de Finanças Pessoais desenvolvido em Python $ Django para fins didáticos.
+            	<br />O código desse projeto encontra-se no <a href="https://github.com/alexfalcucc/projetoFPUNIX" target="_blank">Github</a>. Méritos de ensino: <kbd>Edson Lopes</kbd>
+            </div>
+    
 {%endblock conteudo %}

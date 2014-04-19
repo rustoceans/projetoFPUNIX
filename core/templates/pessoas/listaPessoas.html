@@ -8,7 +8,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-10">
-          <input type="text" class="form-control" name="consultando" value="{{ pessoa.nome }}" placeholder="Digite um texto para a busca...">
+          <input type="text" class="form-control" name="consultando" id="consultando" value="{{ consultando }}" placeholder="Digite um texto para a busca...">
         </div>
         <div class="col-md-2" align="center">
           <button type="submit" class="btn btn-primary">Pesquisar <span class="glyphicon glyphicon-search"></span></button>
@@ -21,27 +21,29 @@
 
 </div>
 <hr>
-<div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>E-Mail</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for pessoa in pessoas %}
-          <tr>
-            <td><a href="/pessoas/editar/{{ pessoa.pk }}"/>{{ pessoa.nome }}</td>
-            <td>{{ pessoa.email }}</td>
-            <td>{{ pessoa.telefone }}</td>
-            <td>{{ pessoa.logradouro }}</td>
-          </tr>
-        {% endfor %}  
-        </tbody>
-      </table>
-</div><!-- FIM TABELA -->
+  <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-Mail</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for pessoa in pessoas %}
+          <thead>
+            <tr>
+              <td><a href="/pessoas/editar/{{ pessoa.pk }}/">{{ pessoa.nome }}</td>
+              <td>{{ pessoa.email }}</td>
+              <td>{{ pessoa.telefone }}</td>
+              <td>{{ pessoa.logradouro }}</td>
+            </tr>
+          </thead>
+          {% endfor %}  
+          </tbody>
+        </table>
+  </div><!-- FIM TABELA -->
 
 {% endblock conteudo %}

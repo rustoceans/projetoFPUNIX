@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'index.html')
 
 def pessoaListar(request):
-    pessoas = Pessoa.objects.all()[0:10]
+    pessoas = Pessoa.objects.all().order_by('-nome')[2:12]
     # TESTE LOCAL PARA VERIFICAR SE A TABELA ESTA LISTANDO
     #pessoas = []
     #pessoas.append(Pessoa(nome='UNIFRAN', email='MAIL'))
@@ -32,23 +32,27 @@ def pessoaSalvar(request):
         pessoa.logradouro = request.POST.get('logradouro', '')
 
         pessoa.save()
-        return HttpResponseRedirect('/pessoas/')
+
+    return HttpResponseRedirect('/pessoas/')
 
 def pessoaBuscar(request):
     if request.method == 'POST':
-        buscar = request.POST['consultando'].upper()
+        consultando = request.POST.get('consultando', 'TUDO')
         try:
-            pessoas = Pessoa.objects.filter(
-            (Q(nome__contains=buscar) |
-            Q(email__contains=buscar) |
-            Q(telefone__contains=buscar)|
-            Q(logradouro__contains=buscar))).order_by('-nome')#buscar tudo e ordena por nome
+            if consultando == 'TUDO':
+                pessoas = Pessoa.objects.all()
+            else:
+                pessoas = Pessoa.objects.filter(
+                (Q(nome__contains=consultando) |
+                Q(email__contains=consultando) |
+                Q(telefone__contains=consultando)|
+                Q(logradouro__contains=consultando))).order_by('-nome')#buscar tudo e ordena por nome
         except:
             pessoas = []
 
         #print cidadao
 
-        return render(request, 'pessoas/buscaPessoas.html', {'pessoas':pessoas})
+        return render(request, 'pessoas/listaPessoas.html', {'pessoas':pessoas, 'consultando':consultando})
 
         """pessoas = []
         consultar = Pessoa.POST['contulta']
@@ -57,8 +61,10 @@ def pessoaBuscar(request):
 def  pessoaEditar(request, pk=0):
     try:
         pessoa = Pessoa.objects.get(pk=pk)
+
     except:   
         return HttpResponseRedirect('/pessoas/')
+
 
     return render(request, 'pessoas/formPessoas.html', {'pessoa': pessoa})  
 

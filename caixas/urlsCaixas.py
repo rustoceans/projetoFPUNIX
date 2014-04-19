@@ -6,6 +6,6 @@ urlpatterns = patterns('caixas.views',
     url(r'^editar/(?P<pk>\d+)/$', 'caixaEditar'),
     url(r'^salvar/$', 'caixaSalvar'),
     url(r'^excluir/(?P<pk>\d+)/$', 'caixaExcluir'),
-    url(r'^buscar/$', 'caixaBuscar'),
+    url(r'^pesquisar/$', 'caixaPesquisar'),
     url(r'^$', 'caixaListar'),
 )

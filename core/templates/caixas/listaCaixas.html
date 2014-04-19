@@ -4,11 +4,11 @@
 
 {% block conteudo %}
 <div align="center">
-  <form role="form" method="POST" action="/caixas/buscar/">{% csrf_token %}
+  <form role="form" method="POST" action="/caixas/pesquisar/">{% csrf_token %}
     <div class="form-group">
       <div class="row">
         <div class="col-md-10">
-          <input type="text" class="form-control" name="buscaCaixa" value="{{ caixa.tipo }}" placeholder="Digite um texto para a busca...">
+          <input type="text" class="form-control" name="txtBusca" id="txtBusca" value="{{ txtBusca }}" placeholder="Pesquisar...">
         </div>
         <div class="col-md-2" align="center">
           <button type="submit" class="btn btn-primary">Pesquisar <span class="glyphicon glyphicon-search"></span></button>
@@ -17,29 +17,30 @@
     </div>  
   </form>
   
-  <a href="/caixas/adicionar/" class="btn btn-warning">Cadastrar Caixa</a>
+  <a href="/caixas/adicionar/" class="btn btn-warning">Cadastrar Conta</a>
 
 </div>
 <hr>
 <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-bordered">
         <thead>
           <tr>
+            <th>Nome</th>
             <th>Tipo</th>
             <th>Descrição</th>
             <th>Valor</th>
             <th>Data</th>
-            
           </tr>
         </thead>
         <tbody>
         {% for caixa in caixas %}
           <tr>
-            <td><a href="/caixas/editar/{{ caixa.pk }}"/>{{ caixa.tipo }}</td>
-            <td><a href="/caixas/editar/{{ caixa.pk }}"/>{{ caixa.descricao }}</td>
-            <td><a href="/caixas/editar/{{ caixa.pk }}"/>{{ caixa.valor }}</td>
-            <td><a href="/caixas/editar/{{ caixa.pk }}"/> {{ caixa.data }}</td>
-
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.pessoa.nome }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.tipo }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.descricao }}</td>
+            <td>{{ caixa.valor }}</td>
+            <td> {{ caixa.data|date }}</td>
+            
           </tr>
         {% endfor %}  
        	
