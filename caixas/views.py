@@ -44,7 +44,8 @@ def caixaPesquisar(request):
                 caixas = Conta.objects.all().order_by('descricao')
             else:
                 caixas = Conta.objects.filter(
-                (Q(tipo__contains=txtBusca) |
+                (Q(pessoa__nome__contains=txtBusca) |
+                Q(tipo__contains=txtBusca) |
                 Q(descricao__contains=txtBusca) |
                 Q(valor__contains=txtBusca) |
                 Q(data__contains=txtBusca))).order_by('-descricao')
