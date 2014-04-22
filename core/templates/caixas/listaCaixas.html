@@ -41,7 +41,7 @@
             <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.pessoa.nome }}</td>
             <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.tipo }}</td>
             <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.descricao }}</td>
-            <td>{{ caixa.valor }}</td>
+            <td>R$ {{ caixa.valor|floatformat:2 }}</td>
             <td> {{ caixa.data|date:"d / m / Y"  }}</td>
             
           </tr>
