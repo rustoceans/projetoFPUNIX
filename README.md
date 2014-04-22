@@ -1,3 +1,3 @@
 Financeiro Pessoal com Python &amp; Django
 
-demo: http://djandofincancas.herokuapp.com/
+demo: http://djangofinancas.herokuapp.com/
