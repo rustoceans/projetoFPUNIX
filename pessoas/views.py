@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'index.html')
 
 def pessoaListar(request):
-    pessoas = Pessoa.objects.all().order_by('-nome')[2:12]
+    pessoas = Pessoa.objects.all().order_by('-nome')[0:12]
     # TESTE LOCAL PARA VERIFICAR SE A TABELA ESTA LISTANDO
     #pessoas = []
     #pessoas.append(Pessoa(nome='UNIFRAN', email='MAIL'))

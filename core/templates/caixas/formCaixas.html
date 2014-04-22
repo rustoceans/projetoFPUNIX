@@ -8,10 +8,13 @@
     <input type="hidden" id="codigo" name="codigo" value="{{ caixa.pk|default_if_none:'0' }}">
 
     <div class="form-group">
-        <label for="idNome" class="col-sm-2 control-label">Nome</label>
+        <label for="idPessoa" class="col-sm-2 control-label">Nome</label>
         <div class="col-sm-10">
-        <select name="pessoa_id" id="nome">
-                <option value="1">Alexsander Falcucci</option>
+        <select name="pessoa" id="pessoa" class="form-control">
+                 <option value="">Escolha uma pessoa</option>
+                 {% for pessoa in pessoas %}
+                        <option value="{{ pessoa.pk }}">{{pessoa.nome}}</option>
+                 {% endfor %}
         </select>
         </div>
     </div>

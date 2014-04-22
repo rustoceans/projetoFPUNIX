@@ -36,10 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'south',
-=======
->>>>>>> f0b8108a56d772bf1c8333ec96a116aedf73ab57
     'caixas',
     'pessoas',
     'core',
@@ -61,19 +58,16 @@ WSGI_APPLICATION = 'projetoFP.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-<<<<<<< HEAD
-"""
-=======
 
->>>>>>> f0b8108a56d772bf1c8333ec96a116aedf73ab57
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-<<<<<<< HEAD
-}"""
 
+}
+
+"""
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -83,13 +77,13 @@ DATABASES = {
     'USER': 'rdeocnofnmsnlf',
     'PASSWORD': 'O7xrQo2knUlQw0KbGVOXxqGBWr'
   }
-}
+}"""
 
 
-=======
-}
 
->>>>>>> f0b8108a56d772bf1c8333ec96a116aedf73ab57
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 

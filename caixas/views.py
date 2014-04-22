@@ -1,19 +1,22 @@
 from django.shortcuts import render, HttpResponseRedirect
 from caixas.models import Conta
 from django.db.models import Q
+from pessoas.models import Pessoa
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
 def caixaListar(request):
-    caixas = Conta.objects.all().order_by('descricao')
+    caixas = Conta.objects.all().order_by('-descricao')
+    pessoas = Pessoa.objects.all().order_by('-nome')
     #caixas = []    
     #caixas.append(Conta(tipo='E', descricao='teste', pessoa_id=1, valor='123', data='12/12/12'))
-    return render(request, 'caixas/listaCaixas.html', {'caixas': caixas})
+    return render(request, 'caixas/listaCaixas.html', {'caixas': caixas, 'pessoas': pessoas})
 
 def caixaAdicionar(request):
-    return render(request, 'caixas/formCaixas.html')
+    pessoas = Pessoa.objects.all()
+    return render(request, 'caixas/formCaixas.html', {'pessoas':pessoas})
 
 def caixaSalvar(request):
     if request.method == 'POST':
@@ -28,6 +31,7 @@ def caixaSalvar(request):
         caixa.valor = request.POST.get('valor', '')
         caixa.data = request.POST.get('data', 'date: "J f, Y"')
         caixa.pessoa_id = request.POST.get('pessoa_id', '')
+        caixa.pessoa = Pessoa.objects.get(pk=request.POST.get('pessoa',''))
 
         caixa.save()
         return HttpResponseRedirect('/caixas/')
