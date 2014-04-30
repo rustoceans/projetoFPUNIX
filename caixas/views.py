@@ -8,7 +8,7 @@ def index(request):
     return render(request, 'index.html')
 
 def caixaListar(request):
-    caixas = Conta.objects.all().order_by('-descricao')
+    caixas = Conta.objects.all().order_by('pessoa__nome')
     pessoas = Pessoa.objects.all().order_by('-nome')
     #caixas = []    
     #caixas.append(Conta(tipo='E', descricao='teste', pessoa_id=1, valor='123', data='12/12/12'))
@@ -38,17 +38,17 @@ def caixaSalvar(request):
 
 def caixaPesquisar(request):
     if request.method == 'POST':
-        txtBusca = request.POST.get('txtBusca', 'TUDO').upper()
+        txtBusca = request.POST.get('txtBusca', '').upper()
         try:
-            if txtBusca == 'TUDO':
-                caixas = Conta.objects.all().order_by('descricao')
+            if txtBusca == '':
+                caixas = Conta.objects.all().order_by('pessoa__nome')
             else:
                 caixas = Conta.objects.filter(
                 (Q(pessoa__nome__contains=txtBusca) |
                 Q(tipo__contains=txtBusca) |
                 Q(descricao__contains=txtBusca) |
                 Q(valor__contains=txtBusca) |
-                Q(data__contains=txtBusca))).order_by('-descricao')
+                Q(data__contains=txtBusca))).order_by('pessoa__nome')
         except:
             caixas = []
 
