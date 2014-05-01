@@ -14,9 +14,9 @@
                  <option value="0">Escolha uma pessoa</option>
                  
                      {% for pessoa in pessoas %}
-                        {% ifequal caixa.pessoa.pk pessoa.pk %}
+                        
                             <option value="{{ pessoa.pk }}">{{pessoa.nome}}</option>
-                        {% endifequal %}
+
 
                      {% endfor %}
                  
