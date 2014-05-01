@@ -11,10 +11,15 @@
         <label for="idPessoa" class="col-sm-2 control-label">Nome</label>
         <div class="col-sm-10">
         <select name="pessoa" id="pessoa" class="form-control">
-                 <option value="">Escolha uma pessoa</option>
-                 {% for pessoa in pessoas %}
-                        <option value="{{ pessoa.pk }}">{{pessoa.nome}}</option>
-                 {% endfor %}
+                 <option value="0">Escolha uma pessoa</option>
+                 
+                     {% for pessoa in pessoas %}
+                        {% ifequal caixa.pessoa.pk pessoa.pk %}
+                            <option value="{{ pessoa.pk }}">{{pessoa.nome}}</option>
+                        {% endifequal %}
+
+                     {% endfor %}
+                 
         </select>
         </div>
     </div>

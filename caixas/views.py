@@ -38,7 +38,7 @@ def caixaSalvar(request):
 
 def caixaPesquisar(request):
     if request.method == 'POST':
-        txtBusca = request.POST.get('txtBusca', '').upper()
+        txtBusca = request.POST.get('txtBusca', '')
         try:
             if txtBusca == '':
                 caixas = Conta.objects.all().order_by('pessoa__nome')
@@ -56,13 +56,14 @@ def caixaPesquisar(request):
 
         return render(request, 'caixas/listaCaixas.html', {'caixas':caixas, 'txtBusca':txtBusca})
 
-def  caixaEditar(request, pk=0):
+def  caixaEditar(request, pk=id):
     try:
         caixa = Conta.objects.get(pk=pk)
+        pessoas = Pessoa.objects.all()
     except:   
         return HttpResponseRedirect('/caixas/')
 
-    return render(request, 'caixas/formCaixas.html', {'caixa': caixa})  
+    return render(request, 'caixas/formCaixas.html', {'caixa': caixa, 'pessoas':pessoas})  
 
 def caixaExcluir(request, pk=0):
     try:

@@ -38,11 +38,11 @@
         <tbody>
         {% for caixa in caixas %}
           <tr>
-            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.pessoa.nome }}</td>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.pessoa.nome|title }}</td>
             <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.tipo }}</td>
             <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ caixa.descricao }}</td>
             <td>R$ {{ caixa.valor|floatformat:2 }}</td>
-            <td> {{ caixa.data|date:"d / m / Y"  }}</td>
+            <td> {{ caixa.data|date:"d / F / Y"  }}</td>
             
           </tr>
         {% endfor %}  
