@@ -13,9 +13,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/pessoas/">Pessoas</a></li>
-        <li><a href="/caixas/">Contas</a></li>
-        <li><a href="#">Fluxo de Caixas</a></li>
+        <li onmouseover="mudaFoto('{{ STATIC_URL }}img/people.png')" onmouseout="mudaFoto('{{ STATIC_URL }}img/gestao_financeira.jpg')"><a href="/pessoas/">Pessoas</a></li>
+        <li onmouseover="mudaFoto('{{ STATIC_URL }}img/contas.jpg')" onmouseout="mudaFoto('{{ STATIC_URL }}img/gestao_financeira.jpg')"><a href="/caixas/">Contas</a></li>
+        <li onmouseover="mudaFoto('{{ STATIC_URL }}img/fluxo.jpg')" onmouseout="mudaFoto('{{ STATIC_URL }}img/gestao_financeira.jpg')"><a href="/fluxos/">Fluxo de Caixas</a></li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

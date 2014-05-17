@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+        <select name="pessoa" id="pessoa" class="form-control">
+        <option>Escolha uma Pessoa</option>
+            {% for pessoa in pessoas %}
+                <option value="{{pessoa.id}}"> {{pessoa.nome}}</option> 
+
+            {% endfor %}
+
+        </select>
+
+
+
+        <div id="dados">
+
+
+        </div>
+
+        {% endblock %}
+
+
+        {% block js %}
+
+        <script>
+
+            $('select').on('change',inicio);
+
+                 function inicio(){
+                    var id = $(this).val();
+                    $.ajax({
+                        data: {'id':id},
+                        url:  '/pessoas/buscarAjax/',
+                        type: 'get',
+                        success: function(data){
+                            var html = ""
+                            for(var i = 0; i<data.length; i++){
+                                html += '<br/><div class="table-responsive"><table class="table table-bordered"><thead><tr><th>Nome</th><th>E-Mail</th><th>Telefone</th><th>Endereço</th></tr></thead><tbody><thead><tr><td>' + data[i].fields.nome+'</td><td>'+data[i].fields.email+'</td><td>'+data[i].fields.telefone+'</td><td>'+data[i].fields.logradouro+'</td></tr></thead></tbody></table></div>'
+                            }
+                            $('#dados').html(html);
+                        }
+
+                    });
+                }
+
+        </script>
+
+
+        {% endblock js %}
+
+        
+
+
+

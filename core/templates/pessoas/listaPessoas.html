@@ -19,6 +19,18 @@
       </div>
     </div>  
   </form>
+
+  <form role="form" method="POST" action="/pessoas/buscarAjax/">{% csrf_token %}
+    <div class="form-group">
+      <div class="row">
+        
+        <div class="col-lg-1" align="center">
+          <button type="submit" class="btn btn-primary">Consulta com Ajax! <span class="glyphicon glyphicon-search"></span></button>
+        </div>
+        
+      </div>
+    </div>  
+  </form>
   
 
 

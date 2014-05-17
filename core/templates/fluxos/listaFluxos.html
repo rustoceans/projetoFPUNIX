@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Caixas{% endblock titulo %}
+
+{% block conteudo %}
+<div align="center">
+  <form role="form" method="POST" action="/fluxos/pesquisar/">{% csrf_token %}
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+        <label>Data Inicial</label>
+          <input type="text" class="form-control" name="dataInicial" id="dataInicial" value="{{ dataInicial|date:'d/m/Y' }}" placeholder="01/01/2001">
+        </div>
+        <label>Data Final</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" name="dataFinal" id="dataFinal" value="{{ dataFinal|date:'d/m/Y' }}" placeholder="01/01/2001">
+        </div>
+
+        <hr>
+
+        <div class="col-md-6" align="center">
+          <button type="submit" class="btn btn-primary">Pesquisar <span class="glyphicon glyphicon-search"></span></button>
+        </div>
+        
+      </div>
+    </div>  
+  </form>
+</div>
+
+ 
+
+
+
+
+<div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th> 
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in caixas %}
+          <tr>
+            <td><a href="/caixas/editar/{{ caixa.pk }}/">{{ item.pessoa.nome|title }}</td>
+            <td>{{ item.tipo }}</td>
+            <td>{{ item.descricao }}</td>
+            <td>R$ {{ item.valor|floatformat:2 }}</td>
+            <td> {{ item.data|date:"d/m/Y"  }}</td>
+          </tr>
+        {% endfor %}  
+        <tr>
+            
+            <td><b>TOTAL: </b></td>
+            <td><b>R$   {{ total|floatformat:2 }}</b></td>
+        
+          </tr>
+
+
+        </tbody>
+      </table>
+</div><!-- FIM TABELA -->
+
+{% endblock conteudo %}

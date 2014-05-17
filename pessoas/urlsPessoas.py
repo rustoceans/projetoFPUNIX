@@ -6,5 +6,6 @@ urlpatterns = patterns('pessoas.views',
     url(r'^salvar/$', 'pessoaSalvar'),
     url(r'^excluir/(?P<pk>\d+)/$', 'pessoaExcluir'),
     url(r'^buscar/$', 'pessoaBuscar'),
+    url(r'^buscarAjax/$', 'pessoaBuscarAjax'),
     url(r'^$', 'pessoaListar'),
 )

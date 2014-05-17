@@ -1,6 +1,9 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.http import HttpResponse
 from pessoas.models import Pessoa
 from django.db.models import Q #Queries complexas
+from django.views.generic import ListView
+from django.core import serializers
 
 
 def index(request):
@@ -35,7 +38,23 @@ def pessoaSalvar(request):
 
     return HttpResponseRedirect('/pessoas/')
 
+def pessoaBuscarAjax(request):
+        pessoas = Pessoa.objects.all()
+
+        if request.method == 'GET':
+            id_pessoa = request.GET['id']
+            pessoas = Pessoa.objects.filter(Q(id__contains=id_pessoa))
+            data = serializers.serialize('json', pessoas, fields=('nome', 'email', 'telefone','logradouro'))
+            return HttpResponse(data, mimetype='application/json')
+
+
+        return render(request, 'pessoas/buscaAjax.html', {'pessoas':pessoas})
+
+
+
+
 def pessoaBuscar(request):
+    
     if request.method == 'POST':
         consultando = request.POST.get('consultando', 'TUDO')
         try:
@@ -53,10 +72,10 @@ def pessoaBuscar(request):
         #print cidadao
 
         return render(request, 'pessoas/listaPessoas.html', {'pessoas':pessoas, 'consultando':consultando})
-
-        """pessoas = []
+        '''
+        pessoas = []
         consultar = Pessoa.POST['contulta']
-        pessoas = """ 
+        pessoas = '''
 
 def  pessoaEditar(request, pk=0):
     try:
